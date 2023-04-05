@@ -1,10 +1,14 @@
 <template>
-    <router-link class="btn btn-dark " to="/posts/create">Create Post</router-link>
-    <div v-if="Loader" class="spinner-border  text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>  
-    <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
-        <PostCard :post='post' />
+    <div>
+        <div>
+            <router-link class="btn btn-dark " to="/posts/create">Create Post</router-link>
+        </div>
+        <div v-if="Loader" class="spinner-border  text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
+            <PostCard :post='post' />
+        </div>
     </div>
     <RouterView></RouterView>
 </template>
