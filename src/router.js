@@ -7,6 +7,7 @@ import TemplatePost from "./Pages/Posts/TemplatePost.vue";
 import PostIndex from "./Pages/Posts/PostIndex.vue";
 import PostShow from "./Pages/Posts/PostShow.vue";
 import CreatePost from "./Pages/Posts/CreatePost.vue";
+import EditPost from "./Pages/Posts/EditPost.vue";
 
 const routes = [
   { path: "/", component: HomeComp },
@@ -27,6 +28,7 @@ const routes = [
       { path: "", name: "posts", component: PostIndex },
       { path: ":id", name: "PostShow", component: PostShow },
       { path: "create", name: "CreatePost", component: CreatePost  },
+      { path: "edit/:id", name: "EditPost", component: EditPost  },
     ],
   },
 ];

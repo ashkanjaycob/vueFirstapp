@@ -1,5 +1,5 @@
 <template>
-    <div>
+
         <div>
             <router-link class="btn btn-dark " to="/posts/create">Create Post</router-link>
         </div>
@@ -9,8 +9,8 @@
         <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
             <PostCard :post='post' />
         </div>
-    </div>
-    <RouterView></RouterView>
+
+    <RouterView> </RouterView>
 </template>
 
 <script>

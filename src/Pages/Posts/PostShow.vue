@@ -14,8 +14,8 @@
                 </ul>
                 <div class="card-footer">
                     <button class="btn btn-danger ">delete</button>
-                    <button class="btn btn-dark ms-4">Edit</button>
-                </div>
+                    <router-link :to="{name:'EditPost' , params:{id:post.id}}" class="btn btn-dark ms-4">edit</router-link>
+                </div> 
             </div>
         </div>
     </div>
