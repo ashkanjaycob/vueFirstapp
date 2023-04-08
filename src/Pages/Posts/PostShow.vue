@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-md-8">
-            <h2>This is post Number : {{ post.id}}</h2>
+            <h2>This is post Number : {{ post.id }}</h2>
             <br><br>
             <div class="card border-success">
                 <div class="card-header">
@@ -13,9 +13,9 @@
                     <li class="list-group-item">{{ post.body }}</li>
                 </ul>
                 <div class="card-footer">
-                    <button class="btn btn-danger ">delete</button>
-                    <router-link :to="{name:'EditPost' , params:{id:post.id}}" class="btn btn-dark ms-4">edit</router-link>
-                </div> 
+                    <button @click="DeletePost" class="btn btn-danger ">delete</button>
+                    <router-link :to="{ name: 'EditPost', params: { id: post.id } }" class="btn btn-dark ms-4">edit</router-link>
+                </div>
             </div>
         </div>
     </div>
@@ -25,6 +25,7 @@
 import { ref } from 'vue'
 import axios from 'axios';
 import { useRoute } from 'vue-router'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'UserIndex',
@@ -47,9 +48,25 @@ export default {
                     // always executed
                 });
         }
+
+        function DeletePost() {
+            axios.delete(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
+                .then(function () {
+                    Swal.fire({
+                        title: 'post dleted !',
+                        text: ` You deleted number ${route.params.id} post successfully.`,
+                        icon: 'warning',
+                        confirmButtonText: 'Done'
+                    })
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
         getPost()
 
-        return { post, Loader, route }
+        return { post, Loader, route, DeletePost }
     }
 
 }
